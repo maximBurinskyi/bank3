@@ -15,6 +15,7 @@ import {CLEAR_ERRORS} from './types';
 import {returnErrors} from './errActions';
 
 export const register = (newUser) => async (dispatch) => {
+  console.log(newUser);
   dispatch({type: REG_LOADING});
 
   const data = JSON.stringify(newUser);
@@ -42,6 +43,32 @@ export const register = (newUser) => async (dispatch) => {
     );
   })
 };
+
+// Login user
+export const login = ({email, password}) => async (dispatch) => {
+  dispatch({type: LOG_LOADING});
+  console.log(email);
+  console.log(password);
+  //make request to login
+  const data = JSON.stringify({email, password});
+
+  await axios({
+    method: 'POST',
+    url: `${API_URI}/api/auth`,
+    data,
+    headers: {'Content-Type': 'application/json' }
+  }).then(res => {
+    const {token} = res.data;
+    AsyncStorage.setItem('@token', token);
+    dispatch({type: CLEAR_ERRORS});
+    dispatch({type: LOGIN_SUCCESS, payload: res.data});
+  })
+  .catch(err => {
+    dispatch({type: LOGIN_FAIL})
+    dispatch(returnErrors('Custom Error', 400, 'LOGIN_FAIL'))
+  })
+
+}
 
 //** Amazon Load User */
 export const loadUser = () => async (dispatch) => {};

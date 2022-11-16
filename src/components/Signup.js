@@ -35,7 +35,7 @@ function Signup({navigation}) {
             return alert('Please enter a valid email and name');
         }
 
-        const newUser = {
+        const data = {
             name,
             email,
             phone,
@@ -43,7 +43,7 @@ function Signup({navigation}) {
             password,
         };
 
-        dispatch(register(newUser));
+        navigate('Password', {data, type: 'REGISTER'});
 
     }
 

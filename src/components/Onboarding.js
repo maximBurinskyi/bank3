@@ -11,6 +11,10 @@ function Onboarding({navigation}) {
     navigate('Register');
   }
 
+  const onLogin = () => {
+    navigate('Login');
+  }
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View style={{ height: 0.65}} >
@@ -26,12 +30,22 @@ function Onboarding({navigation}) {
       </View>
       <Text>Onboarding</Text>
       <View style={{flex: 1}}>
+
         <TouchableOpacity onPress={onRegister}>
           <View style={{ 
           borderRadius: 'medium',
           
           }}>
             <Text style={{textAlign: 'center', fontSize: 18}}>Create an account</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={onLogin}>
+          <View style={{ 
+          borderRadius: 'medium',
+          
+          }}>
+            <Text style={{textAlign: 'center', fontSize: 18}}>Login</Text>
           </View>
         </TouchableOpacity>
 
