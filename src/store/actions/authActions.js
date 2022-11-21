@@ -71,4 +71,25 @@ export const login = ({email, password}) => async (dispatch) => {
 }
 
 //** Amazon Load User */
-export const loadUser = () => async (dispatch) => {};
+export const loadUser = () => async (dispatch) => {
+  dispatch({type: LOG_LOADING});
+
+  const token = await AsyncStorage.getItem('@token');
+  // await AsyncStorage.removeItem('@token');
+
+  await axios({
+    method: 'GET',
+    url: `${API_URI}/api/auth/user`,
+    headers: {
+      'Content-Type': 'application/json',
+      'x-barter-token': token,
+    },
+  })
+    .then((res) => {
+      dispatch({type: USER_LOADED, payload: res.data});
+    })
+    .catch((err) => {
+      dispatch({type: AUTH_ERROR});
+      AsyncStorage.removeItem('@token');
+    });
+};

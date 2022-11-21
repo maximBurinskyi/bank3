@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 
 function Login({navigation}) {
     const {navigate} = navigation;
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState('max@gmail.com');
 
     const onLogin = () => {
         navigate('Password', {data: {email}, type: 'LOGIN'});

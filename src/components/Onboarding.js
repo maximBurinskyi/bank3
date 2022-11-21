@@ -1,11 +1,21 @@
-import * as React from 'react';
+import  React, {useEffect} from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
 import Butterfly from '../Icons/Butterfly';
 import {Box} from './theme';
+import {StackActions} from '@react-navigation/native';
+
 
 
 function Onboarding({navigation}) {
   const {navigate} = navigation; 
+  const {isAuthenticated} = useSelector(state => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigation.dispatch(StackActions.replace('Dashboard'));
+    }
+  }, [isAuthenticated]);
 
   const onRegister = () => {
     navigate('Register');

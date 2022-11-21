@@ -17,7 +17,7 @@ import {
     isAuthenticated: null,
     user: null,
     account_balance: null,
-    account_number: null,
+    //account_number: null,
     userEmail: null,
     userPhone: null,
     userRef: null,
@@ -47,12 +47,12 @@ import {
       case REGISTER_SUCCESS:
         return {
           ...state,
-          payload,
+           payload,
           regLoading: false,
           isAuthenticated: true,
           isLoading: false,
           logLoading: false,
-          account_number: payload.user.account_number,
+          //account_number: payload.user.account_number,
           account_balance: payload.user.account_balance,
         };
       case LOGOUT_SUCCESS:

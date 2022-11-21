@@ -16,6 +16,8 @@ import Tab from './src/components/Tab';
 import Card from './src/components/Dashboard/Card';
 import Transactions from './src/components/Dashboard/Transactions';
 import More from './src/components/Dashboard/More';
+import Send from './src/components/Dashboard/Send';
+import SendMoney from './src/components/Dashboard/SendMoney';
 
 //import { Cards } from './src/Icons';
 
@@ -51,6 +53,9 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Password" component={Password} />
         <Stack.Screen name="Tab" component={TabStackScreen} />
+         <Stack.Screen name="Send" component={Send} /> 
+         <Stack.Screen name="SendMoney" component={SendMoney} /> 
+
 
         {/* <Stack.Screen name="Card" component={Card} />  */}
 

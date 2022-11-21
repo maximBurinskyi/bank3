@@ -25,9 +25,11 @@ const styles = StyleSheet.create({
 function Password({navigation, route}) {
     const {navigate} = navigation;
     const dispatch = useDispatch();
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('max');
     const {data, type} = route.params;
+
     const {isAuthenticated} = useSelector(state => state.auth);
+
     const {msg} = useSelector(state => state.err);
 
     const onSubmit = () => {

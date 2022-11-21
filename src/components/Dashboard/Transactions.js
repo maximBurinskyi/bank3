@@ -69,7 +69,7 @@ function Transactions({navigation}) {
             <View style={{flexDirection: 'row', 
             justifyContent: 'flex-end', 
             alignItems: 'center',
-            paddingTop: theme.spacing.m}}>
+            paddingTop: theme.spacing.s}}>
                 <Ionicons name='settings' size={28} />
                 <Text style={{marginHorizontal: 16, fontSize: 28}}>|</Text>
                 
@@ -125,7 +125,7 @@ function Transactions({navigation}) {
             <View style={{paddingHorizontal: theme.spacing.m}}>
  
             <View style={{flexDirection: 'row', 
-            justifyContent: 'center', 
+            justifyContent: 'space-between', 
             alignItems: 'center'}}>
               <Text>Last 7 days</Text>
             </View>
@@ -164,7 +164,9 @@ function Transactions({navigation}) {
                 {transactions.map(
                   ({name, type, price, purpose, date}, index) => (
                     <View key={index}
-                    style={{paddingHorizontal: theme.spacing.m, flexDirection: 'row', justifyContent: 'space-between',
+                    style={{paddingHorizontal: theme.spacing.m, 
+                      flexDirection: 'row', 
+                      justifyContent: 'space-between',
                     marginBottom: theme.spacing.m,
                     alignItems: 'center',
                     paddingVertical: theme.spacing.m,

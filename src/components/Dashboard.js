@@ -28,6 +28,7 @@ import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
 //import {socket, roomID, receiver} from '../../store/actions/transactionAction';
+import { socket, roomID, receiver } from '../store/actions/transactionAction';
 import {useDispatch, useSelector} from 'react-redux';
 import { backgroundColor } from '@shopify/restyle';
 import theme from './theme';
@@ -75,6 +76,7 @@ export const menus = [
 ];
 
 function Dashboard({navigation}) {
+    const dispatch = useDispatch();
     const {navigate} = navigation;
 
     //User account
@@ -91,6 +93,13 @@ function Dashboard({navigation}) {
         if(route === 'Send') return  navigate('Send');
         
     };
+
+    useEffect(() => {
+        socket.emit("joinService", {roomID});
+        console.log('joinservece');
+        console.log(roomID);
+        dispatch(receiver());
+    },[]);
 
 
   return (
