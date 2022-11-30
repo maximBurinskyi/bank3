@@ -91,6 +91,7 @@ function Dashboard({navigation}) {
 
     const onCTA = (route) =>{
         if(route === 'Send') return  navigate('Send');
+        if(route === 'Request') return  navigate('Request');
         
     };
 

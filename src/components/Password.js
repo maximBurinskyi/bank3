@@ -5,6 +5,7 @@ import {Input, Form, Item, Button, Stack} from 'native-base';
 import {StackActions} from '@react-navigation/native';
 import {register, login} from '../store/actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
+import theme from './theme';
 
 
 const styles = StyleSheet.create({
@@ -61,8 +62,10 @@ function Password({navigation, route}) {
 
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white', justifyContent: 'flex-start', position: 'relative'}}>
-        <View>
+    <View style={{flex: 1, backgroundColor: 'white', justifyContent: 'flex-start', 
+    position: 'relative'}}>
+        <View style={{paddingHorizontal: theme.spacing.m, 
+            paddingVertical: theme.spacing.m, marginTop: theme.spacing.m}}>
             <View>
                 <View>{msg ? (<Text>{msg}</Text>) : null}</View>
             </View>
@@ -79,7 +82,9 @@ function Password({navigation, route}) {
                     style={styles.btnStyle}
                     onPress={onSubmit}
                     >
-                        {type === 'LOGIN' ? 'Login' : 'Register'}
+                        <Text style={{fontSize: 18, color: 'white', fontWeight: '700'}}>
+                        {type === 'LOGIN' ? 'Login' : 'Register'}    
+                        </Text>
                     </Button>
         </View>
     </View>

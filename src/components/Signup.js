@@ -5,11 +5,15 @@ import { Input, Form, Item, Button } from "native-base";
 //import { View } from "react-native";
 import {register} from '../store/actions/authActions';
 import { useDispatch } from "react-redux";
+import theme from "./theme";
+
 
 const styles = StyleSheet.create({
     itemStyle: {
-        marginTop: 20,
-        paddingLeft: 20
+        marginTop: 22,
+        paddingLeft: 20,
+        borderBottomWidth: 0.3,
+        borderBottomColor: 'gray'
     },
     btnStyle: {
         width: '100%', 
@@ -17,7 +21,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: 'blue',
         borderRadius: 5,
-        marginTop: 10
+        marginTop: 20,
+        fontSize: 18
     }
 });
 
@@ -56,7 +61,10 @@ function Signup({navigation}) {
         //     </View>
         // </View>
         <>
-        <View>
+        <View style={{flex: 1, backgroundColor: 'white'}}>
+            <View style={{paddingHorizontal: theme.spacing.m,
+            paddingVertical: theme.spacing.m}}>
+                <View style={{marginTop: theme.spacing.m}}>
             
                 
                {/* <Form>
@@ -106,14 +114,14 @@ function Signup({navigation}) {
                     style={styles.btnStyle}
                     onPress={onSubmit}
                     >
+                        <Text style={{fontSize: 18, color: 'white'}}>
                         Continue
+                        </Text>
                     </Button>
                 
-
-
+                    </View>
+              </View>
                 
-
-            
         </View>
         </>
     )

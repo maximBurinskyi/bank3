@@ -44,8 +44,30 @@ export const send = ({amount, account, purpose}) => async (dispatch, getState) =
   dispatch({type: UPDATE_AMOUNT, payload: currentUserAmount});
 };
 
+
+export const request = ({amount, account, purpose}) => (dispatch, getState) => {
+const {payload} = getState().auth;
+
+const data = {
+  amount,
+  account_number: account,
+  purpose,
+  sender: payload.user.email,
+  roomID
+};
+
+socket.emit("request", data);
+
+const currentUserAmount = payload.user.account_balance + amount;
+dispatch({type: UPDATE_AMOUNT, payload: currentUserAmount});
+
+
+};
+
 export const receiver = () => async (dispatch, getState) => {
   const {payload} = getState().auth;
+  console.log(payload);
+
 
   //console.log(user);
 

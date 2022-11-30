@@ -18,6 +18,8 @@ import Transactions from './src/components/Dashboard/Transactions';
 import More from './src/components/Dashboard/More';
 import Send from './src/components/Dashboard/Send';
 import SendMoney from './src/components/Dashboard/SendMoney';
+import Request from './src/components/Dashboard/Request';
+import RequestMoney from './src/components/Dashboard/RequestMoney';
 
 //import { Cards } from './src/Icons';
 
@@ -30,7 +32,7 @@ export default function App() {
   const TabStackScreen = () => {
     return (
       <TabStack.Navigator>
-        <TabStack.Screen name='Dashboard' component={Dashboard} />
+        <TabStack.Screen name='Dashboard' component={Dashboard} options={{headerShown: false}} />
         <TabStack.Screen name='Card' component={Card} />
          <TabStack.Screen name='Transactions' component={Transactions} />
         <TabStack.Screen name='More' component={More} /> 
@@ -48,13 +50,15 @@ export default function App() {
     <NativeBaseProvider>
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Onboarding" component={Onboarding} />
+        <Stack.Screen name="Onboarding" component={Onboarding}  />
         <Stack.Screen name="Register" component={Signup} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Password" component={Password} />
         <Stack.Screen name="Tab" component={TabStackScreen} />
          <Stack.Screen name="Send" component={Send} /> 
          <Stack.Screen name="SendMoney" component={SendMoney} /> 
+         <Stack.Screen name="Request" component={Request} />
+         <Stack.Screen name="RequestMoney" component={RequestMoney} />
 
 
         {/* <Stack.Screen name="Card" component={Card} />  */}
