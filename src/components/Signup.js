@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         width: '100%', 
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'blue',
+        backgroundColor: '#964ff0',
         borderRadius: 5,
         marginTop: 20,
         fontSize: 18
@@ -61,7 +61,7 @@ function Signup({navigation}) {
         //     </View>
         // </View>
         <>
-        <View style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{flex: 1, backgroundColor: '#1e1e1e'}}>
             <View style={{paddingHorizontal: theme.spacing.m,
             paddingVertical: theme.spacing.m}}>
                 <View style={{marginTop: theme.spacing.m}}>
@@ -79,6 +79,7 @@ function Signup({navigation}) {
                 <TextInput 
                     style={styles.itemStyle}
                     placeholder="Name & Surname"
+                    placeholderTextColor='white'
                     onChangeText={newText => setName(newText)}
                     defaultValue={name}
                     />
@@ -86,6 +87,7 @@ function Signup({navigation}) {
                 <TextInput 
                     style={styles.itemStyle}
                     placeholder="Email Address"
+                    placeholderTextColor='white'
                     onChangeText={newText => setEmail(newText)}
                     defaultValue={email}
                     />
@@ -93,6 +95,7 @@ function Signup({navigation}) {
                 <TextInput 
                     style={styles.itemStyle}
                     placeholder="Password"
+                    placeholderTextColor="white"
                     onChangeText={newText => setPassword(newText)}
                     defaultValue={password}
                     />
@@ -100,6 +103,7 @@ function Signup({navigation}) {
                 <TextInput 
                     style={styles.itemStyle}
                     placeholder="Phone Number"
+                    placeholderTextColor='white'
                     onChangeText={newText => setPhone(newText)}
                     defaultValue={phone}
                     />
@@ -107,6 +111,7 @@ function Signup({navigation}) {
                 <TextInput 
                     style={styles.itemStyle}
                     placeholder="Refferal Code (Optional)"
+                    placeholderTextColor='white'
                     onChangeText={newText => setUserRef(newText)}
                     defaultValue={userRef}
                     />

@@ -7,6 +7,8 @@ import {useSelector} from 'react-redux';
 import { View, Text } from 'react-native';
 import theme from '../theme';
 //import { theme } from 'native-base';
+//import {useDispatch, useSelector} from 'react-redux';
+
 
 function More({navigation}) {
   const {navigate} = navigation;
@@ -14,20 +16,20 @@ function More({navigation}) {
   const {account_number} = useSelector(state => state.auth);
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white', justifyContent:'flex-start'}}>
+    <View style={{flex: 1, backgroundColor: '#1e1e1e', justifyContent:'flex-start'}}>
       <View style={{flex: 1, padding: theme.spacing.m}}>
-        <Text style={{variant: 'title1', color: 'black', fontSize: 30}}>
+        <Text style={{variant: 'title1', color: 'white', fontSize: 30}}>
           More things you can do
         </Text>
 
-        <Text style={{marginTop: theme.spacing.m, fontWeight: '600', variant: 'title2', fontSize: 25, marginBottom: theme.spacing.m}}>
+        <Text style={{marginTop: theme.spacing.m, color: 'white', fontWeight: '600', variant: 'title2', fontSize: 25, marginBottom: theme.spacing.m}}>
           Receive Money
         </Text>
       
       <View style={{backgroundColor: 'gray', paddingVertical: theme.spacing.m, paddingHorizontal: theme.spacing.m, borderRadius: theme.spacing.m}}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text style={{color: 'black', variant: 'body'}}>Barter Account Number</Text>
-          <Text style={{variant: 'title1', color: 'black', fontSize: 18, marginLeft: theme.spacing.s, fontWeight: '700'}}>
+          <Text style={{variant: 'title1', color: 'white', fontSize: 18, marginLeft: theme.spacing.s, fontWeight: '700'}}>
              {account_number}
           </Text>
         </View>
@@ -36,7 +38,7 @@ function More({navigation}) {
             Bank Name:
           </Text>
           <Text style={{variant: 'title1', color: 'black', fontSize: 18, marginLeft: theme.spacing.s, fontWeight: '700'}}>
-            Bolt Skills Bank PLC
+            Bank of America
           </Text>
         </View>
       </View>
@@ -44,27 +46,27 @@ function More({navigation}) {
         <TouchableOpacity>
           <View style={{flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, paddingBottom: theme.spacing.m, borderBottomColor: 'primaryLight'}}>
             <View>
-              <Text style={{variant: 'title2', fontSize: 17}}>
+              <Text style={{variant: 'title2', color: 'white', fontSize: 17}}>
                 Invite friens
               </Text>
-              <Text style={{variant: 'body', fontSize: 14}}>
+              <Text style={{variant: 'body', color: 'white', fontSize: 14}}>
                 Get paid for every friend that signs up and uses applicaton
               </Text>
             </View>
           </View>
         </TouchableOpacity>
         <View style={{flexDirection: 'column', marginTop: theme.spacing.m, paddingHorizontal: theme.spacing.m}}>
-          <Text style={{variant: 'title', color: 'black', fontSize: 20, fontWeight: 'bold'}}>
+          <Text style={{variant: 'title', color: 'white', fontSize: 20, fontWeight: 'bold'}}>
             Make a payment
           </Text>
 
           <TouchableOpacity>
             <View style={{marginTop: theme.spacing.m, flexDirection: 'row', justifyContent: 'space-between', marginTop: theme.spacing.s, borderBottomWidth: 1, borderBottomColor: 'primaryLight', paddingBottom: theme.spacing.m}}>
               <View>
-                <Text style={{variant: 'title2', fontSize: 17}}>
+                <Text style={{variant: 'title2', color: 'white', fontSize: 17}}>
                   Pay with qr code
                 </Text>
-                <Text style={{variant: 'body', fontSize: 14}}>
+                <Text style={{variant: 'body', color: 'white', fontSize: 14}}>
                   Make payments with Visa
                 </Text>
               </View>
@@ -74,17 +76,17 @@ function More({navigation}) {
         </View>
 
         <View style={{flexDirection: 'column', marginTop: theme.spacing.m, paddingHorizontal: theme.spacing.m}}>
-          <Text style={{variant: 'title', color: 'black', fontSize: 20, fontWeight: 'bold'}}>
+          <Text style={{variant: 'title', color: 'white', fontSize: 20, fontWeight: 'bold'}}>
             Send Money
           </Text>
 
           <TouchableOpacity>
             <View style={{marginTop: theme.spacing.m, flexDirection: 'row', justifyContent: 'space-between', marginTop: theme.spacing.s, borderBottomWidth: 1, borderBottomColor: 'primaryLight', paddingBottom: theme.spacing.m}}>
               <View>
-                <Text style={{variant: 'title2', fontSize: 17}}>
+                <Text style={{variant: 'title2', color: 'white', fontSize: 17}}>
                   Send Money to Whatsapp
                 </Text>
-                <Text style={{variant: 'body', fontSize: 14}}>
+                <Text style={{variant: 'body', color: 'white', fontSize: 14}}>
                   Send Money to your friens on Whatsapp
                 </Text>
               </View>

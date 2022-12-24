@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { TextInput, View, Text } from 'react-native';
+import { TextInput, View } from 'react-native';
 import theme from '../theme';
 //import theme, {Box, Text} from '../theme';
 //import {Nigeria} from '../../Icons';
@@ -11,6 +11,10 @@ import { Button } from 'native-base';
 import { useDispatch } from 'react-redux';
 //import { socket, roomID, receiver } from '../store/actions/transactionAction';
 import {socket, roomID} from '../../store/actions/transactionAction';
+import styled from 'styled-components';
+import Text from '../Text';
+import NumberPad from '../NumberPad';
+
 
 
 
@@ -21,6 +25,12 @@ function Send({navigation}) {
     const [amount, setAmount] = useState('');
     const {navigate} = navigation;
     const dispatch = useDispatch();
+
+    const pressKey = (item, index) => {
+        setAmount((prev) => {
+            return index != 10 ? prev + item : prev.slice(0, prev.length - 1);
+        });
+    };
 
 
     const onSend = () => {
@@ -38,8 +48,33 @@ function Send({navigation}) {
     }
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-        <View style={{backgroundColor: 'green',
+    <Container>
+    <View style={{flex: 1, backgroundColor: '#1e1e1e'}}>
+        <Text center large heavy margin="16px 0 0 0">Send</Text>
+
+        <Amount>
+            {/* <Text title heavy>${amount}</Text> */}
+            <TextInput placeholder='$0.00' 
+        style={{
+            padding: 7,
+            textAlign: 'center',
+            color: 'white',
+         height: 50, 
+         width: '100%',
+          fontWeight: 'bold', 
+          fontSize: 32}}
+        keyboardType='number-pad' 
+        placeholderTextColor='white'
+         defaultValue={amount}
+        onChangeText={(amount) => setAmount(amount)} />
+            <Text bold color="#727479">Choose amount to send</Text>
+        </Amount>
+
+        {/* <Send>
+            <Text>Send $0.00</Text>
+        </Send> */}
+
+        {/* <View style={{backgroundColor: 'green',
     flexDirection: 'row', justifyContent: 'space-between', 
     alignItems: 'center', paddingHorizontal: theme.spacing.m,
     paddingVertical: theme.spacing.l}}>
@@ -75,11 +110,12 @@ function Send({navigation}) {
              fontSize: 13,
               color: 'black'}}>NGN</Text>
               </View>
-    </View>
+    </View> */}
     <View style={{marginTop: theme.spacing.l}}>
         <Button style={{
             width: '100%',
             backgroundColor: theme.colors.barter,
+            margin: 20,
             textAlign: 'center',
             justifyContent: 'center',
             borderRadius: 5,
@@ -88,8 +124,27 @@ function Send({navigation}) {
             <Text style={{fontSize: 23, fontWeight: 'bold'}}>Continue</Text>
         </Button>
     </View>
+
+    <NumberPad onPress={pressKey} />
+
     </View>
+    
+
+    </Container>
   )
 }
+
+const Container = styled.SafeAreaView`
+    flex: 1;
+    background-color: #1e1e1e;
+`;
+
+const Amount = styled.View`
+    margin-top: 64px;
+    align-items: center;
+
+`;
+
+//const Send = styled.TouchableOpacity``;
 
 export default Send;

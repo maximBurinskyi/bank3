@@ -6,18 +6,20 @@ import {StackActions} from '@react-navigation/native';
 import {register, login} from '../store/actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
 import theme from './theme';
+import styled from 'styled-components';
 
 
 const styles = StyleSheet.create({
     itemStyle: {
         marginTop: 20,
-        paddingLeft: 20
+        paddingLeft: 20,
+        color: 'white'
     },
     btnStyle: {
         width: '100%', 
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'blue',
+        backgroundColor: '#393939',
         borderRadius: 5,
         marginTop: 10
     }
@@ -62,10 +64,12 @@ function Password({navigation, route}) {
 
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white', justifyContent: 'flex-start', 
+    <View style={{flex: 1, backgroundColor: '#1e1e1e', justifyContent: 'flex-start',
     position: 'relative'}}>
         <View style={{paddingHorizontal: theme.spacing.m, 
             paddingVertical: theme.spacing.m, marginTop: theme.spacing.m}}>
+                            <Text style={{marginTop: theme.spacing.m, color: 'white', paddingTop: theme.spacing.l, alignItems: 'center' }}>You need to provide your password below </Text>
+
             <View>
                 <View>{msg ? (<Text>{msg}</Text>) : null}</View>
             </View>

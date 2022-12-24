@@ -8,6 +8,7 @@ import {useDispatch} from 'react-redux';
 import theme from '../theme';
 import {request, send} from '../../store/actions/transactionAction';
 import {StackActions} from '@react-navigation/native';
+import styled from 'styled-components';
 
 
 
@@ -30,14 +31,14 @@ function RequestMoney({navigation, route}) {
   return (
     <View style={{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#1e1e1e',
         paddingHorizontal: theme.spacing.m,
         paddingVertical: theme.spacing.l
     }}>
-        <Text style={{marginBottom: theme.spacing.l}}>Recepient's details</Text>
+        <Text style={{marginBottom: theme.spacing.l, color: 'white'}}>Recepient's details</Text>
         <View style={{borderBottomWidth: 1, paddingVertical: theme.spacing.m,
         paddingHorizontal: theme.spacing.m}}>
-            <Text style={{fontWeight: '900', fontSize: 15}}>Bolt Skills Bank plc</Text>
+            <Text style={{fontWeight: '900', color: 'white', fontSize: 15}}>Bolt Skills Bank plc</Text>
         </View>
         <View style={{borderBottomWidth: 1, paddingVertical: theme.spacing.m, marginBottom: theme.spacing.m}}>
             <TextInput 
@@ -48,7 +49,7 @@ function RequestMoney({navigation, route}) {
                 paddingVertical: 0
             }}
             keyboardType='number-pad'
-            placeholderTextColor='#000'
+            placeholderTextColor='white'
             defaultValue={account}
             onChangeText={text => setAccount(text)}
             />
@@ -62,7 +63,7 @@ function RequestMoney({navigation, route}) {
                 fontSize: 15,
                 paddingVertical: 0
             }}
-            placeholderTextColor='#000'
+            placeholderTextColor='white'
             defaultValue={purpose}
             onChangeText={text => setPurpose(text)}
             />
@@ -73,13 +74,13 @@ function RequestMoney({navigation, route}) {
         }}>
             <Button style={{
                 width: '100%',
-                backgroundColor: theme.colors.barter,
+                backgroundColor: '#964ff0',
                 textAlign: 'center',
                 justifyContent: 'center',
                 borderRadius: 5,
                 paddingVertical: 12
             }} onPress={onSend}>
-                <Text style={{fontSize: 23, fontWeight: 'bold'}}>
+                <Text style={{fontSize: 23, color: 'white', fontWeight: 'bold'}}>
                     Continue
                 </Text>
             </Button>

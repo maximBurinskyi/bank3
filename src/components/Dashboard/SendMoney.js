@@ -8,6 +8,8 @@ import {useDispatch} from 'react-redux';
 import theme from '../theme';
 import {send} from '../../store/actions/transactionAction';
 import {StackActions} from '@react-navigation/native';
+import styled from 'styled-components';
+
 
 
 
@@ -28,16 +30,17 @@ function SendMoney({navigation, route}) {
         navigation.dispatch(StackActions.replace('Dashboard'));
     }
   return (
+    <Container>
     <View style={{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#1e1e1e',
         paddingHorizontal: theme.spacing.m,
         paddingVertical: theme.spacing.l
     }}>
-        <Text style={{marginBottom: theme.spacing.l}}>Recepient's details</Text>
+        <Text style={{marginBottom: theme.spacing.l, color: 'white'}}>Recepient's details</Text>
         <View style={{borderBottomWidth: 1, paddingVertical: theme.spacing.m,
         paddingHorizontal: theme.spacing.m}}>
-            <Text style={{fontWeight: '900', fontSize: 15}}>Bolt Skills Bank plc</Text>
+            <Text style={{fontWeight: '900', fontSize: 15, color: 'white'}}>Bolt Skills Bank plc</Text>
         </View>
         <View style={{borderBottomWidth: 1, paddingVertical: theme.spacing.m, marginBottom: theme.spacing.m}}>
             <TextInput 
@@ -45,10 +48,11 @@ function SendMoney({navigation, route}) {
             style={{
                 width: '100%',
                 fontSize: 15,
-                paddingVertical: 0
+                paddingVertical: 0,
+                color: 'white'
             }}
             keyboardType='number-pad'
-            placeholderTextColor='#000'
+            placeholderTextColor='white'
             defaultValue={account}
             onChangeText={text => setAccount(text)}
             />
@@ -62,7 +66,7 @@ function SendMoney({navigation, route}) {
                 fontSize: 15,
                 paddingVertical: 0
             }}
-            placeholderTextColor='#000'
+            placeholderTextColor='white'
             defaultValue={purpose}
             onChangeText={text => setPurpose(text)}
             />
@@ -79,13 +83,22 @@ function SendMoney({navigation, route}) {
                 borderRadius: 5,
                 paddingVertical: 12
             }} onPress={onSend}>
-                <Text style={{fontSize: 23, fontWeight: 'bold'}}>
+                <Text style={{fontSize: 23, color: 'white', fontWeight: 'bold'}}>
                     Continue
                 </Text>
             </Button>
         </View>
     </View>
+
+    
+
+    </Container>
   )
 }
+
+const Container = styled.SafeAreaView`
+    flex: 1;
+    background-color: #1e1e1e;
+`;
 
 export default SendMoney;

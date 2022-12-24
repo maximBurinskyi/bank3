@@ -9,12 +9,12 @@ function Slide({title, body}) {
   return (
     <View style={{justifyContent: 'center', alignItems: 'center', 
     marginTop: theme.spacing.l}}>
-        <View style={{height: 300, width: 300, backgroundColor: 'gray',
+        <View style={{height: 300, width: 300, backgroundColor: '#393939',
             marginBottom: theme.spacing.m}}>
             <View style={{justifyContent: 'center',
              alignItems: 'center', paddingHorizontal: theme.spacing.l}}>
-                <Text style={{color: 'black', fontSize: 22, lineHeight: 20, marginTop: theme.spacing.m, marginBottom: theme.spacing.s, variant: 'hero', fontWeight: 'bold'}}>{title}</Text>
-                <Text style={{color: 'black', textAlign: 'center', fontSize: 16, fontWeight: '400'}}>{body}</Text>
+                <Text style={{color: 'white', fontSize: 22, lineHeight: 20, marginTop: theme.spacing.m, marginBottom: theme.spacing.s, variant: 'hero', fontWeight: 'bold'}}>{title}</Text>
+                <Text style={{color: 'white', textAlign: 'center', fontSize: 16, fontWeight: '400'}}>{body}</Text>
             </View>
         </View>
     </View>

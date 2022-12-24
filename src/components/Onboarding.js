@@ -7,6 +7,10 @@ import {StackActions} from '@react-navigation/native';
 const {width, height} = Dimensions.get('window');
 import Animated from 'react-native-reanimated';
 import Slide from './Slide';
+import styled from 'styled-components';
+//mport Text from '../Text';
+
+
 
 const slides = [
   {
@@ -14,20 +18,20 @@ const slides = [
     body:
       'Create custom virtua USD card at affordable rates for your payments and subscriptions',
   },
-  {
-    title: 'Your Better financial Half',
-    body:
-      'Managing Your funds should be the easiest task on your to-do-lis, so we created Barter just for you',
-  },
-  { 
-    title: 'Take Control Over Your Money Anytime, Anywhere',
-    body:
-      "Always know what's going on with your money. Thanks for the instant notification",
-  },
-  {
-    title: 'Account Protection',
-    body: 'Barter is secured by Flutterwave. Your money is always safe with us',
-  },
+  // {
+  //   title: 'Your Better financial Half',
+  //   body:
+  //     'Managing Your funds should be the easiest task on your to-do-lis, so we created Barter just for you',
+  // },
+  // { 
+  //   title: 'Take Control Over Your Money Anytime, Anywhere',
+  //   body:
+  //     "Always know what's going on with your money. Thanks for the instant notification",
+  // },
+  // {
+  //   title: 'Account Protection',
+  //   body: 'Barter is secured by Flutterwave. Your money is always safe with us',
+  // },
 ];
 
 
@@ -53,7 +57,8 @@ function Onboarding({navigation}) {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
+    <Container>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#1e1e1e' }}>
       <View style={{ height: height * 0.6}} >
         <View style={{ flexDirection:'row', 
         justifyContent:'center',
@@ -62,12 +67,12 @@ function Onboarding({navigation}) {
            {/* <Butterfly style={{width: 40, height: 40}} /> */}
           <Text style={{variant: 'title1', 
           fontSize: 32, 
-          color: 'black', 
+          color: '#964ff0', 
           fontWeight: 'bold', 
           textDecorationStyle: 'solid' }}>
-            Bank           
+            myBank           
           </Text>
-          <Text style={{marginLeft: theme.spacing.s, fontSize: 12}}>that was built for your</Text>
+          {/* <Text style={{marginLeft: theme.spacing.s, fontSize: 12}}>that was built for your</Text> */}
           </View>
           <View>
             <Animated.ScrollView ref={scroll}  horizontal 
@@ -86,12 +91,12 @@ function Onboarding({navigation}) {
           </View>
         
       </View>
-      <View>
+      {/* <View>
         <Text>Bank</Text>
-      </View>
+      </View> */}
 
       <View style={{paddingHorizontal: theme.spacing.l}}>
-      <Text style={{fontSize: 14, paddingHorizontal: theme.spacing.l, fontWeight: '600'}}>For frictionless and seamless Onboarding click below:</Text>
+      <Text style={{fontSize: 14, paddingHorizontal: theme.spacing.l, fontWeight: '600', color: 'white'}}>For frictionless and seamless Onboarding click below:</Text>
       </View>
       
       <View style={{flex: 1}}>
@@ -100,7 +105,7 @@ function Onboarding({navigation}) {
          onPress={onRegister}>
           <View style={{
           width: width * 0.8,
-          backgroundColor: 'blue',
+          backgroundColor: 'orange',
           paddingVertical: theme.spacing.m,
           borderRadius: theme.spacing.m,
           marginBottom: theme.spacing.s,
@@ -115,7 +120,7 @@ function Onboarding({navigation}) {
         <TouchableOpacity onPress={onLogin}>
           <View style={{
           width: width * 0.8,
-          backgroundColor: 'gray',
+          backgroundColor: '#393939',
           paddingVertical: theme.spacing.m,
           borderRadius: theme.spacing.m,
           marginBottom: theme.spacing.s,
@@ -123,12 +128,22 @@ function Onboarding({navigation}) {
           //height: height * 0.5,
 
         }} >
-            <Text style={{textAlign: 'center', fontSize: 18}}>Login</Text>
+            <Text style={{textAlign: 'center', fontSize: 18, color: 'white'}}>Login</Text>
           </View>
         </TouchableOpacity>
 
       </View>
     </View>
+    
+      
+    </Container>
   );
 }
+
+const Container = styled.SafeAreaView`
+  flex: 1;
+  background-color: #1e1e1e;
+
+`;
+
 export default Onboarding;
