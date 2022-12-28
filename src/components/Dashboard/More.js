@@ -14,6 +14,7 @@ function More({navigation}) {
   const {navigate} = navigation;
 
   const {account_number} = useSelector(state => state.auth);
+  //console.log(account_number);
 
   return (
     <View style={{flex: 1, backgroundColor: '#1e1e1e', justifyContent:'flex-start'}}>

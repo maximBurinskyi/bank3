@@ -4,9 +4,9 @@ import {TextInput, View, Text} from 'react-native';
 import {Button} from 'native-base';
 //import {StackActions} from '@react-navigation/native';
 //import {send} from '../../store/actions/transactionAction';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import theme from '../theme';
-import {send} from '../../store/actions/transactionAction';
+import {send, transactions} from '../../store/actions/transactionAction';
 import {StackActions} from '@react-navigation/native';
 import styled from 'styled-components';
 
@@ -19,6 +19,9 @@ function SendMoney({navigation, route}) {
     const [purpose, setPurpose] = useState('');
     const [account, setAccount] = useState('');
 
+    //const {sender} = useSelector(state => state.transactionAction);
+
+
     const onSend = () => {
         const data = {
             amount: +amount,
@@ -29,6 +32,23 @@ function SendMoney({navigation, route}) {
         dispatch(send(data));
         navigation.dispatch(StackActions.replace('Dashboard'));
     }
+
+    // const onSend = () => {
+    //     //const {payload} = getState().auth;
+
+    //     const data = {
+    //         //sender: sender,
+    //          amount: +amount,
+    //          purpose,
+    //          account: +account,
+    //     };
+    //     console.log(data);
+    //     dispatch(transactions(data));
+    //     navigation.dispatch(StackActions.replace('Dashboard'));
+    // }
+
+
+    //console.log(payload)
   return (
     <Container>
     <View style={{

@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 //import theme, {Box, Text} from '../theme';
 import {Input, Form, Item, Button} from 'native-base';
 import theme from './theme';
 import styled from 'styled-components';
+import axios from 'axios';
 
 
 const styles = StyleSheet.create({
@@ -29,6 +30,8 @@ function Login({navigation}) {
     const onLogin = () => {
         navigate('Password', {data: {email}, type: 'LOGIN'});
     };
+
+   
   return (
     <Container>
     <View style={{flex: 1, backgroundColor: '#1e1e1e'}}>

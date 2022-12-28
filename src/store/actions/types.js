@@ -9,6 +9,7 @@ export const REG_LOADING = 'REG_LOADING';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const LOG_LOADING = 'LOG_LOADING';
+export const UPDATE_TRANSACTIONS = 'UPDATE_TRANSACTIONS';
 
 /* Errors */
 export const GET_ERRORS = 'GET_ERRORS';
@@ -20,13 +21,14 @@ export const RECEIVE_MONEY = 'RECEIVE_MONEY';
 export const UPDATE_AMOUNT = 'UPDATE_ACCOUNT';
 export const UPDATE_BALANCE = 'UPDATE_BALANCE';
 
+
 /* API */
-export const API_URI = `http://192.168.1.163:5000`;
+//export const API_URI = `http://192.168.1.163:5000`;
 
 //export const API_URI = `http://localhost:5000`;
 //export const API_URI = `http://192.168.0.31:5000`;
-//export const API_URI = `http://10.10.10.192:5000`;
-//export const API_URI = `http://192.168.0.33:5000`;
+//export const API_URI = `http://10.10.10.231:5000`;
+export const API_URI = `http://192.168.1.112:5000`;
 //export const API_URI = `http://10.24.9.25:5000`;
 
 

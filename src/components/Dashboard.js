@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Dimensions, ImageBackground, StyleSheet, View, } from 'react-native';
 //import theme, {Box, Text} from '../theme';
+//import {Container, Content} from 'native-base';
 //import {Container, Content} from 'native-base';
 //import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 //import Entypo from 'react-native-vector-icons/Entypo';
@@ -8,8 +9,13 @@ import {Dimensions, ImageBackground, StyleSheet, View, } from 'react-native';
 import styled from 'styled-components';
 import {FontAwesome5, MaterialIcons, AntDesign} from '@expo/vector-icons';
 
+//import { FontAwesome5, MaterialIcon, AntDesign } from 'react-native-vector-icons/MaterialIcons';
+import styled from 'styled-components';
+import {FontAwesome5, MaterialIcons, AntDesign} from '@expo/vector-icons';
+
 
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Text from './Text';
 import Text from './Text';
 
 import {
@@ -32,13 +38,18 @@ import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
 //import {socket, roomID, receiver} from '../../store/actions/transactionAction';
-import { socket, roomID, receiver } from '../store/actions/transactionAction';
+import { socket, roomID, receiver, transactions } from '../store/actions/transactionAction';
 import {useDispatch, useSelector} from 'react-redux';
 import { backgroundColor } from '@shopify/restyle';
 import theme from './theme';
 import { Entypo } from '@expo/vector-icons';
 //import purchaseData from '../../purchases';
 import purchaseData from '../../purchases';
+import axios from 'axios';
+//import {send, transactions} from '../../store/actions/transactionAction';
+import { Button} from 'native-base';
+
+
 
 //const {width, height} = Dimensions.get('window');
 
@@ -81,22 +92,48 @@ export const menus = [
   {text: 'More', icon: <More width={30} height={30} />, routeName: 'More'},
 ];
 
+const styles2 = StyleSheet.create({
+    itemStyle: {
+        marginTop: 20,
+        paddingLeft: 20,
+        color: 'white'
+    },
+    btnStyle: {
+        width: '100%', 
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#393939',
+        borderRadius: 5,
+        marginTop: 10
+    }
+});
+
 function Dashboard({navigation}) {
     const dispatch = useDispatch();
+    
     const {navigate} = navigation;
 
     //User account
     const {account_balance} = useSelector(state => state.auth);
-    const {name} = useSelector(store => store.auth);
+    const {allTransactions} = useSelector(state => state.auth);
+    const {account_number} = useSelector(state => state.auth)
+    const {name} = useSelector(state => state.auth);
+    const {email} = useSelector(state => state.auth);
+    const [appState, setAppState] = useState();
+
+    // const {data, type} = route.params;
+    // console.log(data);
+
+
 
     const renderPurchase = ({item}) => (
         <Purchase>
             <PurchaseInfo>
-                <Text heavy>{item.product}</Text>
-                <Text bold margin="2px 0 2px 0">{item.store}</Text>
-                <Text small color="#727479" >{item.address}</Text>
+                <Text heavy>{item.purpose}</Text>
+                {/* <Text bold margin="2px 0 2px 0">{item.store}</Text>
+                <Text small color="#727479" >{item.address}</Text> */}
             </PurchaseInfo>
-            <Text heavy>{item.price}</Text>
+            <Text heavy>${" "}{item.amount}</Text>
         </Purchase>
     )
     
@@ -113,6 +150,23 @@ function Dashboard({navigation}) {
         
     };
 
+    const onSubmit = () => {
+        const data = {
+            // amount: +amount,
+            // purpose,
+             account_number,
+              email,
+        };
+        //console.log(data);
+        dispatch(transactions(data));
+       
+    }
+
+    // useEffect(() => {
+    //     dispatch(transactions({ account_number, email}));
+
+    // }, [])
+
     useEffect(() => {
         socket.emit("joinService", {roomID});
         console.log('joinservece');
@@ -120,6 +174,34 @@ function Dashboard({navigation}) {
         dispatch(receiver());
     },[]);
 
+    console.log("show email" + email);
+
+    const number = { account_number: '70506186133'};
+    const number_email = { email: 'max@gmail.com'};
+    //const number_email2 = { email: 'maxim10@gmail.com'}
+
+    useEffect(() => {
+
+        axios.post('http://127.0.0.1:5000/transactions2', number_email)
+            .then((res) => {
+              //dispatch({type: USER_LOADED, payload: res.data});
+              console.log(res.data.transactions);
+
+              const transactions = res.data.transactions;
+              setAppState(transactions);
+            })
+            .catch((err) => {
+              //dispatch({type: AUTH_ERROR});
+              //AsyncStorage.removeItem('@token');
+            });
+
+    }, [])
+
+    // useEffect(() => {
+    //     dispatch(transactions());
+    // }, [])
+
+    console.log( 'test' + appState);
 
   return (
     <Container>
@@ -127,7 +209,8 @@ function Dashboard({navigation}) {
             <ProfilePhoto />
             <Welcome>
                 <Text heavy medium>Welcome,</Text>
-                <Text>Maxim</Text>
+                
+                <Text>{name}</Text>
             </Welcome>
             <FontAwesome5 name="cog" size={24} color="#565656" />
 
@@ -183,6 +266,7 @@ function Dashboard({navigation}) {
             <>
             <TransactionsHeader>
                 <Text>Last Purchases</Text>
+                
                 <MaterialIcons name='sort' size={24} color="#5196f4" />
             </TransactionsHeader>
 
@@ -192,10 +276,11 @@ function Dashboard({navigation}) {
             </SearchContainer>
             </>
         } 
-        data={purchaseData} 
+        data={appState} 
         renderItem={renderPurchase}
          showsVerticalScrollIndicator={false}
         />
+        
         
         <StatusBar barStyle="light-content" />
     </Container>
@@ -324,6 +409,22 @@ function Dashboard({navigation}) {
     //             </View>
     //         </View>
             
+    //     </Container>
+    //     {/* Tab aplication */}
+    //     <View height={70} backgroundColor='danger'>
+    //         <View style={{...StyleSheet.tabs}}>
+    //             {menus.map(({icon, text, routeName}, index) => (
+    //                 <View {...{index}} style={{...styles.tab}} key={index}>
+    //                     <Tab
+    //                     onPress={(index, route) => onSwitch(index, route)}
+    //                     {...{index, text, routeName}} >
+    //                         {icon}
+    //                     </Tab>
+    //                 </View>
+    //             ))}
+    //         </View>
+    //     </View>
+    // </View>
     //     </Container>
     //     {/* Tab aplication */}
     //     <View height={70} backgroundColor='danger'>

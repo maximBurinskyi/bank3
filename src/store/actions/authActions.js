@@ -10,6 +10,7 @@ import {
   LOGIN_FAIL,
   AUTH_ERROR,
   USER_LOADED,
+  UPDATE_TRANSACTIONS
 } from './types';
 import {CLEAR_ERRORS} from './types';
 import {returnErrors} from './errActions';
@@ -68,6 +69,10 @@ export const login = ({email, password}) => async (dispatch) => {
     dispatch(returnErrors('Custom Error', 400, 'LOGIN_FAIL'))
   })
 
+
+
+  
+
 }
 
 //** Amazon Load User */
@@ -92,4 +97,32 @@ export const loadUser = () => async (dispatch) => {
       dispatch({type: AUTH_ERROR});
       AsyncStorage.removeItem('@token');
     });
+
+
+    
 };
+
+
+
+export const transactions = ( email) => async (dispatch, getState) => {
+  //const {account_number} = data;
+  //const {payload} = getState().auth;
+  //const sender = payload.user.email;
+  //console.log(account_number);
+
+  // I need to use axios here
+
+  const number = { account_number: '70506186133'};
+
+   await axios.post('127.0.0.1:5000/transactions', number)
+    .then((res) => {
+      //dispatch({type: USER_LOADED, payload: res.data});
+      console.log(res.data);
+      dispatch({type: USER_LOADED, payload: res.data});
+    })
+    .catch((err) => {
+      //dispatch({type: AUTH_ERROR});
+      //AsyncStorage.removeItem('@token');
+    });
+
+}

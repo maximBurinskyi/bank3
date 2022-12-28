@@ -11,19 +11,24 @@ import {
     REGISTER_FAIL,
     UPDATE_BALANCE,
     UPDATE_AMOUNT,
+    UPDATE_TRANSACTIONS,
   } from '../actions/types';
   
   const initialState = {
     isAuthenticated: null,
     user: null,
     account_balance: null,
-    //account_number: null,
+    account_number: null,
+    //removed coment above
     userEmail: null,
     userPhone: null,
     userRef: null,
     regLoading: false,
     logLoading: false,
     isLoading: false,
+    allTransactions: null,
+    name: null,
+    email: null
   };
   
   export default (state = initialState, {type, payload}) => {
@@ -36,7 +41,7 @@ import {
       case LOG_LOADING:
         return {
           ...state,
-          logLoading: true,
+            logLoading: true,
         };
       case USER_LOADING:
         return {
@@ -52,8 +57,11 @@ import {
           isAuthenticated: true,
           isLoading: false,
           logLoading: false,
-          //account_number: payload.user.account_number,
+          account_number: payload.user.account_number,
+          //removed coment above
           account_balance: payload.user.account_balance,
+          name: payload.user.name,
+          email: payload.user.email,
         };
       case LOGOUT_SUCCESS:
       case LOGIN_FAIL:
@@ -73,12 +81,19 @@ import {
           user: payload,
           logLoading: false,
           account_balance: payload.account_balance,
+          allTransactions: payload,
+
         };
       case UPDATE_AMOUNT:
         return {
           ...state,
           account_balance: payload,
         };
+        case UPDATE_TRANSACTIONS:
+          return {
+            ...state,
+            allTransactions: payload,
+          };
       case UPDATE_BALANCE:
         return {
           ...state,
