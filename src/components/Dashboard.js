@@ -6,8 +6,8 @@ import {Dimensions, ImageBackground, StyleSheet, View, } from 'react-native';
 //import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 //import Entypo from 'react-native-vector-icons/Entypo';
 //import { FontAwesome5, MaterialIcon, AntDesign } from 'react-native-vector-icons/MaterialIcons';
-import styled from 'styled-components';
-import {FontAwesome5, MaterialIcons, AntDesign} from '@expo/vector-icons';
+//import styled from 'styled-components';
+//import {FontAwesome5, MaterialIcons, AntDesign} from '@expo/vector-icons';
 
 //import { FontAwesome5, MaterialIcon, AntDesign } from 'react-native-vector-icons/MaterialIcons';
 import styled from 'styled-components';
@@ -15,7 +15,7 @@ import {FontAwesome5, MaterialIcons, AntDesign} from '@expo/vector-icons';
 
 
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Text from './Text';
+//import Text from './Text';
 import Text from './Text';
 
 import {

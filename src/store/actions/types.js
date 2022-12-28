@@ -23,12 +23,12 @@ export const UPDATE_BALANCE = 'UPDATE_BALANCE';
 
 
 /* API */
-//export const API_URI = `http://192.168.1.163:5000`;
+export const API_URI = `http://192.168.1.163:5000`;
 
 //export const API_URI = `http://localhost:5000`;
 //export const API_URI = `http://192.168.0.31:5000`;
 //export const API_URI = `http://10.10.10.231:5000`;
-export const API_URI = `http://192.168.1.112:5000`;
+//export const API_URI = `http://192.168.1.112:5000`;
 //export const API_URI = `http://10.24.9.25:5000`;
 
 
