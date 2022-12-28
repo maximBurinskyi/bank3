@@ -220,11 +220,7 @@ function Dashboard({navigation}) {
         </Text>
         <Text center heavy black color="#727479">Current Balance</Text>
 
-        {/* <Send>
-            <Text>Send</Text>
-            
-
-        </Send> */}
+        
 
         
         <View style={{alignItems: 'center', margin: 'auto'}}>
